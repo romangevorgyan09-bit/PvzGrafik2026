@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Space+Grotesk:wght@500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+}
+
+/* Scrollbar tweaks */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Custom transitions and dynamic scroll tweaks */
+html, body {
+  background-color: #0a0a0e;
+  color: #f3f4f6;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+.min-height-100dvh {
+  min-height: 100dvh;
+}
+
+/* Dynamic light mode variables and UI overrides */
+[data-theme="light"] {
+  background-color: #f4f6f9 !important;
+  color: #1e293b !important;
+}
+
+[data-theme="light"] html, 
+[data-theme="light"] body {
+  background-color: #f4f6f9 !important;
+  color: #1e293b !important;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.12);
+}
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.22);
+}
+
+[data-theme="light"] select,
+[data-theme="light"] input,
+[data-theme="light"] textarea {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03) !important;
+}
+
+[data-theme="light"] select option {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+}
+
+/* Day cells inside Calendar */
+[data-theme="light"] .day-cell {
+  background-color: #ffffff !important;
+  color: #1e293b !important;
+}
+
+[data-theme="light"] .day-cell.other-month {
+  background-color: #f1f5f9 !important;
+  color: #94a3b8 !important;
+}
+
+[data-theme="light"] .day-cell.weekend {
+  background-color: #fef2f2 !important;
+  color: #ef4444 !important;
+}
+
+/* Escaped utility class mappings for perfect dynamic light rendering */
+[data-theme="light"] .bg-\[\#0a0a0e\] {
+  background-color: #f4f6f9 !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .bg-\[\#0a0a0e\]\/80 {
+  background-color: rgba(244, 246, 249, 0.85) !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .bg-\[\#14141b\] {
+  background-color: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+}
+
+[data-theme="light"] .bg-\[\#14141b\]\/95 {
+  background-color: rgba(255, 255, 255, 0.98) !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .bg-\[\#14141b\]\/90 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02) !important;
+}
+
+[data-theme="light"] .bg-\[\#14141b\]\/85 {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.03), 0 10px 15px -3px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .bg-\[\#14141b\]\/55 {
+  background-color: #f1f5f9 !important;
+  border-color: #e2e8f0 !important;
+  color: #475569 !important;
+}
+
+[data-theme="light"] .bg-\[\#14141b\]\/20 {
+  background-color: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
+}
+
+[data-theme="light"] .bg-\[\#1a1a24\] {
+  background-color: #f8fafc !important;
+  border-color: #cbd5e1 !important;
+}
+
+[data-theme="light"] .hover\:bg-\[\#1a1a24\]:hover {
+  background-color: #f1f5f9 !important;
+}
+
+[data-theme="light"] .bg-black\/20 {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+[data-theme="light"] .bg-black\/25 {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+[data-theme="light"] .bg-white\/5 {
+  background-color: rgba(0, 0, 0, 0.03) !important;
+}
+
+[data-theme="light"] .bg-white\/10 {
+  background-color: rgba(0, 0, 0, 0.06) !important;
+}
+
+[data-theme="light"] .hover\:bg-white\/10:hover {
+  background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+[data-theme="light"] .hover\:bg-white\/5:hover {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .border-white\/5 {
+  border-color: #cbd5e1 !important;
+}
+
+[data-theme="light"] .border-white\/10 {
+  border-color: #cbd5e1 !important;
+}
+
+[data-theme="light"] .border-b {
+  border-color: #e2e8f0 !important;
+}
+
+/* Responsive Texts hierarchy overrides */
+[data-theme="light"] .text-gray-100 {
+  color: #0f172a !important;
+}
+[data-theme="light"] .text-gray-200 {
+  color: #1e293b !important;
+}
+[data-theme="light"] .text-gray-300 {
+  color: #334155 !important;
+}
+[data-theme="light"] .text-gray-400 {
+  color: #64748b !important;
+}
+[data-theme="light"] .text-gray-500 {
+  color: #94a3b8 !important;
+}
+
+/* Golden text and gradient text clipping overrides */
+[data-theme="light"] .text-transparent.bg-gradient-to-r {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  color: #0f172a !important;
+  -webkit-text-fill-color: #0f172a !important;
+}
+
+[data-theme="light"] .text-transparent.bg-gradient-to-r.from-emerald-400 {
+  background: none !important;
+  color: #15803d !important;
+  -webkit-text-fill-color: #15803d !important;
+}
+
+[data-theme="light"] .text-transparent.bg-gradient-to-r.from-amber-400 {
+  background: none !important;
+  color: #b45309 !important;
+  -webkit-text-fill-color: #b45309 !important;
+}
+
+/* Salary cards high quality emerald layout */
+[data-theme="light"] .bg-gradient-to-br {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(245, 158, 11, 0.05)) !important;
+  border-color: rgba(16, 185, 129, 0.2) !important;
+}
+
+/* Modals overlays backgrounds */
+[data-theme="light"] .bg-black\/75 {
+  background-color: rgba(15, 23, 42, 0.5) !important;
+}
+
+[data-theme="light"] .bg-black\/40 {
+  background-color: #e2e8f0 !important;
+  border-color: #cbd5e1 !important;
+}
+
+[data-theme="light"] .text-emerald-400 {
+  color: #16a34a !important;
+}
+
+[data-theme="light"] .onboarding-hint {
+  background-color: #fffbeb !important;
+  border-color: #fde68a !important;
+  color: #b45309 !important;
+}
+
+[data-theme="light"] .onboarding-badge {
+  background-color: #fef3c7 !important;
+  border-color: #fde68a !important;
+  color: #b45309 !important;
+}
+
+/* Color-preservation and beautiful print layouts for PDF exports */
+@media print {
+  /* Force exact colors, gradients, and backgrounds across all browsers */
+  html, body, div, span, button, p, h1, h2, h3, h4, select, svg {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  @page {
+    size: A4 landscape;
+    margin: 12mm 10mm 12mm 10mm;
+  }
+
+  body {
+    min-height: auto !important;
+    height: auto !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Hide navigation controls, floating tools, modals, and buttons on printed paper */
+  .print-hide,
+  header button,
+  div.print-hide,
+  nav,
+  button,
+  .fixed,
+  .overflow-x-auto,
+  [role="dialog"] {
+    display: none !important;
+  }
+
+  /* Main layout should adapt beautifully to landscape full-width format */
+  main {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .max-w-\[540px\],
+  .md\:max-w-\[720px\],
+  .xl\:max-w-\[1020px\] {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Force side-by-side bento block rendering in print so calendar and stats sit side-by-side */
+  .grid-cols-1 {
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  }
+
+  .xl\:grid-cols-12 > div:first-child {
+    grid-column: span 7 / span 7 !important;
+  }
+
+  .xl\:grid-cols-12 > div:last-child {
+    grid-column: span 5 / span 5 !important;
+  }
+
+  /* Prevent tragic break-offs of cards onto next page */
+  .day-cell, 
+  .day-cell *,
+  p, 
+  h3, 
+  span {
+    page-break-inside: avoid !important;
+  }
+
+  /* Elegant aesthetic touch-up to headers on paper */
+  header {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+    margin-bottom: 20px !important;
+    padding: 10px 0 !important;
+  }
+}
+
+

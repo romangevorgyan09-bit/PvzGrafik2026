@@ -1,0 +1,137 @@
+{
+  "entities": {
+    "Employee": {
+      "title": "Employee",
+      "description": "Represents an employee in the pickup point schedule",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier of the employee"
+        },
+        "name": {
+          "type": "string",
+          "description": "Full name of the employee"
+        },
+        "color": {
+          "type": "string",
+          "description": "Color assigned to the employee for the calendar representation"
+        },
+        "rate": {
+          "type": "number",
+          "description": "Salary rate in rubles"
+        },
+        "rateType": {
+          "type": "string",
+          "enum": ["hour", "day"],
+          "description": "Type of rate: hourly ('hour') or per shift ('day')"
+        }
+      },
+      "required": ["id", "name", "color", "rate", "rateType"]
+    },
+    "Shift": {
+      "title": "Shift",
+      "description": "A single shift entry on a specific date",
+      "type": "object",
+      "properties": {
+        "empId": {
+          "type": "string",
+          "description": "ID of the employee"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["full", "morning", "evening"],
+          "description": "Template type of the shift"
+        },
+        "start": {
+          "type": "string",
+          "description": "Start time in HH:MM format"
+        },
+        "end": {
+          "type": "string",
+          "description": "End time in HH:MM format"
+        },
+        "note": {
+          "type": "string",
+          "description": "Optional comment or note"
+        }
+      },
+      "required": ["empId", "type", "start", "end"]
+    },
+    "DayShifts": {
+      "title": "DayShifts",
+      "description": "Container for all shifts assigned to a specific date document",
+      "type": "object",
+      "properties": {
+        "shifts": {
+          "type": "array",
+          "description": "List of shifts assigned on that day"
+        }
+      },
+      "required": ["shifts"]
+    },
+    "PersonalNote": {
+      "title": "PersonalNote",
+      "description": "A personal note or memo stored by the user",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique note identifier"
+        },
+        "title": {
+          "type": "string",
+          "description": "Header of the note"
+        },
+        "body": {
+          "type": "string",
+          "description": "Content body"
+        },
+        "date": {
+          "type": "string",
+          "description": "Formatted local creation date/time string"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp ISO string for sorting"
+        }
+      },
+      "required": ["id", "title", "body", "date"]
+    },
+    "UserSettings": {
+      "title": "UserSettings",
+      "description": "Global user interface preferences",
+      "type": "object",
+      "properties": {
+        "theme": {
+          "type": "string",
+          "enum": ["dark", "light"],
+          "description": "Aesthetic interface theme"
+        },
+        "currentEmpFilter": {
+          "type": "string",
+          "description": "Current selected employee ID filter or 'all'"
+        }
+      },
+      "required": ["theme", "currentEmpFilter"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}/employees/{employeeId}": {
+      "schema": "Employee",
+      "description": "Subcollection storing employees for a specific user"
+    },
+    "/users/{userId}/days/{dateKey}": {
+      "schema": "DayShifts",
+      "description": "Subcollection storing daily shifts of the user keyed by YYYY-MM-DD"
+    },
+    "/users/{userId}/notes/{noteId}": {
+      "schema": "PersonalNote",
+      "description": "Subcollection storing personal notes/memos of the user"
+    },
+    "/users/{userId}/settings/preferences": {
+      "schema": "UserSettings",
+      "description": "Document holding setting configuration preferences of the user"
+    }
+  }
+}

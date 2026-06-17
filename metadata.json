@@ -1,0 +1,6 @@
+{
+  "name": "ПВЗ График",
+  "description": "Инструмент для составления графиков смен сотрудников пунктов выдачи заказов и автоматического расчета окладов",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
